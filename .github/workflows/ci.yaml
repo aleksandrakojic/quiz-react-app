@@ -121,10 +121,14 @@ jobs:
          
       - name: Snyk Authenticate    
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
       - name: Snyk Code Test
         run: snyk code test --all-projects
         continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   backend-security:
     needs: backend-test
@@ -188,6 +192,8 @@ jobs:
        
     - name: Snyk Authenticate    
       run: snyk auth ${{ secrets.SNYK_TOKEN }}
+      env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   
     - name: Snyk Container monitor
       run: snyk container monitor ${{ secrets.DOCKER_USERNAME }}/frontend-js --file=Dockerfile   
@@ -236,6 +242,8 @@ jobs:
      
     - name: Snyk Authenticate    
       run: snyk auth ${{ secrets.SNYK_TOKEN }}
+      env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
     - name: Snyk Container monitor
       run: snyk container monitor ${{ secrets.DOCKER_USERNAME }}/backend-api --file=Dockerfile   
