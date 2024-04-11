@@ -1,12 +1,6 @@
 name: React.js CI
 
-on:
-	push:
-		branches: "main"
-    paths:
-      - ./*
-  pull_request:
-    branches: "main"
+on: [push, pull_request]
 
 jobs:
   frontend-test:
@@ -45,7 +39,7 @@ jobs:
         uses: warchant/setup-sonar-scanner@v8
 
       - name: Analyze with SonarCloud
-        uses: sonarsource/sonarcloud-github-action@main
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -91,7 +85,7 @@ jobs:
         uses: warchant/setup-sonar-scanner@v8
 
       - name: Analyze with SonarCloud
-        uses: sonarsource/sonarcloud-github-action@main
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
