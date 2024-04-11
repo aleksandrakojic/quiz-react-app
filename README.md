@@ -1,1 +1,1 @@
-# quiz-react-app
+# React Quiz App & K8S
